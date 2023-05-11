@@ -16,8 +16,11 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
+import com.storeship.Store.DetaileStoreForm;
 import com.storeship.entities.Produit;
+import com.storeship.gui.SessionManager;
 import com.storeship.services.ProduitService;
+import com.storeship.services.ServiceStore;
 
 
 /**
@@ -185,7 +188,7 @@ Resources theme1 = UIManager.initFirstTheme("/theme");
                 EmailSender.sendEmail();
                 // call the email sending method here
                 Dialog.show("Succés", "Produit ajouté avec succes", new Command("Ok"));
-                showBackAndRefresh();
+                new DetaileStoreForm(ServiceStore.getInstance().getOneStore(SessionManager.getUser().getId()).getId()).show();
             } else {
                 Dialog.show("Erreur", "Erreur d'ajout de Produit. Code d'erreur : " + responseCode, new Command("Ok"));
             }

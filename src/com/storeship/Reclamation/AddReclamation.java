@@ -114,6 +114,7 @@ inputContainer.add(addImageButton);
             if (success) {
                 // Show a success message
                 Dialog.show("Success", "Reclamation added successfully", "OK", null);
+                new ReclamationStat().show();
             } else {
                 // Show an error message
                 Dialog.show("Error", "Failed to add reclamation", "OK", null);

@@ -6,6 +6,7 @@ import com.codename1.ui.Label;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.storeship.entities.Reclamation;
+import com.storeship.gui.SessionManager;
 import com.storeship.services.ServiceReclamation;
 import java.util.ArrayList;
 
@@ -17,7 +18,7 @@ public class ReclamationsForm extends Form {
         super(new BorderLayout());
         
         // Retrieve the reclamations using the serviceReclamation class
-        ArrayList<Reclamation> reclamations = ServiceReclamation.getInstance().getReclamationsById(8);
+        ArrayList<Reclamation> reclamations = ServiceReclamation.getInstance().getReclamationsById(SessionManager.getUser().getId());
         
         // Check if the reclamations list is empty
         if (reclamations.isEmpty()) {

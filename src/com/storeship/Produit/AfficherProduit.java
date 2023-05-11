@@ -23,6 +23,7 @@ import com.storeship.entities.StaticPanier;
 import com.storeship.gui.SessionManager;
 import com.codename1.ui.layouts.FlowLayout;
 import com.mycompany.myapp.MyApplication;
+import com.storeship.services.ServiceStore;
 
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public class AfficherProduit extends BaseForm{
         setTitle("Panier Courrant");
         getContentPane().setScrollVisible(false);
           Resources res =MyApplication.getTheme();
-        setTitle("List Reservations");
+        setTitle("List Produits");
         super.addSideMenu(res);
         addGUIs();
         addActions();
@@ -71,7 +72,7 @@ public class AfficherProduit extends BaseForm{
                 Container MAINcontainer=new Container(new FlowLayout(CENTER, LEFT));
 
 
-        ArrayList<Produit> listProduit = ProduitService.getInstance().getAll(null);
+        ArrayList<Produit> listProduit = ProduitService.getInstance().getAll(ServiceStore.getInstance().getOneStore(SessionManager.getUser().getId()));
 
 
         if (listProduit.size() > 0) {

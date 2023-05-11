@@ -49,10 +49,8 @@ public class ProduitService {
         listProduit = new ArrayList<>();
 
         cr = new ConnectionRequest();
-        if (store!=null)
-       
-        {
-             cr.setUrl(Statics.BASE_URL + "/getprodJSON"); // redo
+        if (store!=null) {
+             cr.setUrl(Statics.BASE_URL + "/StoregetprodJSON?store="+store.getId()); // redo
         }
         else
         {
@@ -141,7 +139,6 @@ public class ProduitService {
            cr.addArgument("prix", Double.toString(produit.getPrix()));
         cr.addArgument("quantite", Float.toString(produit.getQuantite()));
               cr.addArgument("etat", Float.toString(produit.getEtat()));
-             
               
               
                     

@@ -181,6 +181,8 @@ public void addStore(Store s) {
         @Override
         public void actionPerformed(NetworkEvent evt) {
             req.removeResponseListener(this);
+                        sendMail();
+
         }
     });
     NetworkManager.getInstance().addToQueueAndWait(req);
@@ -291,7 +293,6 @@ public void addRating(int rate,int store_id,int user_id) {
         @Override
         public void actionPerformed(NetworkEvent evt) {
             req.removeResponseListener(this);
-            sendMail();
         }
     });
     NetworkManager.getInstance().addToQueueAndWait(req);

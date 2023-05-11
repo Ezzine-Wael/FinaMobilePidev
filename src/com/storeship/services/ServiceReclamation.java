@@ -7,6 +7,7 @@ import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
 import com.codename1.l10n.SimpleDateFormat;
 import com.codename1.ui.events.ActionListener;
+import com.codename1.util.StringUtil;
 import com.storeship.entities.Reclamation;
 import com.storeship.entities.TypeReclamation;
 import com.storeship.utils.Statics;
@@ -39,7 +40,8 @@ public class ServiceReclamation {
     }
 
     public boolean addReclamation(Reclamation r) {
-        String url = Statics.BASE_URL + "/Json/add_reclamation/" + r.getIdUser() + "/" + r.getIdCommande() + "/" + r.getEtat() + "/"  + r.getImage()+ "/" + r.getContenu() + "/" + r.getIdProduit() + "/" + r.getType().getId();
+        String newContenu=StringUtil.replaceAll(r.getContenu(),"\\s+","%20");
+        String url = Statics.BASE_URL + "/Json/add_reclamation?idUser=" + r.getIdUser() + "&idCommande=" + r.getIdCommande() + "&etat=" + r.getEtat() + "&image="  + r.getImage().substring(r.getImage().lastIndexOf('/') + 1)+ "&contenu=" + newContenu+ "&idProduit=" + r.getIdProduit() + "&type=" + r.getType().getId();
         System.out.println("url====" + url );
         req.setUrl(url);
         req.setPost(false);
